@@ -38,7 +38,7 @@ app.use(session({
 }));
 
 // Routes
-const UserRoutes = require('./routers/User');
+const UserRoutes = require('./routers/user');
 app.use('/', UserRoutes);
 
 // Database connection
