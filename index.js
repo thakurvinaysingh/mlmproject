@@ -41,6 +41,10 @@ app.use(session({
 const UserRoutes = require('./routers/user');
 app.use('/', UserRoutes);
 
+app.get('/', async (req, res) => {
+    console.log('Vercel verification');
+    res.send('Vercel is deployed successfully');
+});
 // Database connection
 mongoose.connect(process.env.MONGO_URL)
     .then(() => {
