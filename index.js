@@ -30,7 +30,7 @@ store.on('error', function (error) {
 
 // Configure sessions
 app.use(session({
-    secret: process.env.secret, // Replace with a secret key
+    secret: process.env.Secret_Key || 'your-secret-key', // Replace with a secret key
     resave: false,
     saveUninitialized: true,
     store: store,
@@ -38,7 +38,8 @@ app.use(session({
 }));
 
 // Routes
-
+const UserRoutes = require('./routers/User');
+app.use('/', UserRoutes);
 
 // Database connection
 mongoose.connect(process.env.MONGO_URL)

@@ -4,13 +4,15 @@ const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 
-const { User } = require('../mongodb'); // Ensure this path is correct
+const { User } = require('../models/user'); // Ensure this path is correct
 
 // Get the JWT secret key from environment variables
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key';
 
-
-
+router.get('/vercel', (req, res) => {
+    console.log('Vercel verification');
+    res.status(200).send('Vercel deployment is successful');
+});
 router.post('/register', async (req, res) => {
     try {
         const { name, email, phone, isAdmin, password, cpassword } = req.body;
