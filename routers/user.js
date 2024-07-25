@@ -9,7 +9,7 @@ const { User } = require('../models/user'); // Ensure this path is correct
 // Get the JWT secret key from environment variables
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key';
 
-router.get('/vercel', (req, res) => {
+router.get('/', (req, res) => {
     console.log('Vercel verification');
     res.status(200).send('Vercel deployment is successful');
 });
