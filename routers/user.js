@@ -13,6 +13,7 @@ router.get('/vercel', (req, res) => {
     console.log('Vercel verification');
     res.status(200).send('Vercel deployment is successful');
 });
+
 router.post('/register', async (req, res) => {
     try {
         const { name, email, phone, isAdmin, password, cpassword } = req.body;
