@@ -11,7 +11,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key';
 
 router.get('/', (req, res) => {
     console.log('Vercel verification');
-    res.status(200).send('Vercel deployment is successful');
+    res.status(200).json('Vercel deployment is successful');
 });
 
 router.post('/register', async (req, res) => {
