@@ -37,14 +37,25 @@ app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 7 }, // 1 week
 }));
 
-// Routes
-const UserRoutes = require('./routers/user');
+// Routers handler ...
+
+const UserRoutes = require('./routers/userfile');
 app.use('/', UserRoutes);
+
+const PackageFile = require('./routers/package');
+app.use('/packages',PackageFile)
+
+const PackageRequest = require('./routers/packageRequest');
+app.use('/',PackageRequest)
+
+const commissionPercentage = require('./routers/commission');
+app.use('/setCommission',commissionPercentage)
 
 app.get('/', async (req, res) => {
     console.log('API verification by vinay');
     res.send('Api is deployed successfully');
 });
+
 // Database connection
 mongoose.connect(process.env.MONGO_URL)
     .then(() => {

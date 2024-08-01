@@ -25,14 +25,30 @@ const userSchema = new mongoose.Schema({
     image: {
         type: String
     },
-    masteruserID: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    },
     status: {
         type: String,
         default: 'pending'
-    }
+    },
+    wallet:{
+        type: Number,
+        default: 0
+    },
+    packages: {
+        packageId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Package'
+        },
+        purchasedAt: {
+            type: Date,
+            default: Date.now
+        }
+    },
+    leftChild: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    rightChild: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    parent: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    level: { type: Number, default: 0 }, // Level in the tree
+    createdAt: { type: Date, default: Date.now }
+
 });
 
 const User = mongoose.model('User', userSchema);
